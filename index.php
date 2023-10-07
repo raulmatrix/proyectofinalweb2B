@@ -26,11 +26,36 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 
+  <script>
+    function validarusuario(){
+      $(document).ready(function()
+        {
+        const usuario = $("#usuario").val();
+        const passw = $('#passw').val();
+
+        console.log(usuario);
+        console.log(passw);
+
+        $.post("validarDatos.php",{valor1: usuario, valor2:passw},function(result){
+
+          $("#validado").html(result);
+          $('#validado').show();
+
+        });
+      });
+    }
+
+  </script>
+
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
     <a href="../../index2.html"><b>Sistema Cobro Agua</b>OTB</a>
+  </div>
+
+  <div id="validado">
+
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -58,7 +83,7 @@
          
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            <button type="button" onclick="validarusuario()" class="btn btn-primary btn-block">Ingresar</button>
           </div>
           <!-- /.col -->
         </div>
