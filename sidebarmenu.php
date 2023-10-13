@@ -14,7 +14,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo "Raul Vera";?></a>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
            
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="socios.php" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Socios

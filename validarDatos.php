@@ -8,10 +8,10 @@
     $valor1 = $_POST['valor1'];
     $valor2 = $_POST['valor2'];
 
-    $sql = "select usuario,password from usuario where usuario='$valor1' and password='$valor2'";
+    $sql = "select idUsuario,usuario,password,nombre,apellidoPat from usuario where usuario='$valor1' and password='$valor2'";
 
     
-    $resultado = $conexion->query($sql);
+    $resultado = $conexionBD->conexion->query($sql);
 
    if($resultado->num_rows>0){
     ?>

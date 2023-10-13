@@ -25,6 +25,41 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+
+  <script>
+    function insertarSocio(){
+      $(document).ready(function()
+        {
+        const usuario = $("#usuario").val();
+        const passw = $('#passw').val();
+        const nombre = $('#nombre').val();
+        const apellidoPat = $('#apellidoPat').val();
+        const apellidoMat = $('#apellidoMat').val();
+        const telefono = $('#telefono').val();
+        const fechaNac = $('#fechaNac').val();
+        const carnet = $('#carnet').val();
+        const rol = $('#rol').val();
+        const sexo = $('#sexo').val();
+        const datosAdi = $('#datosAd').val();
+        const direccion = $('#dirsocio').val();
+
+
+        console.log(usuario);console.log(passw);console.log(nombre);console.log(apellidoPat);
+        console.log(apellidoMat);console.log(telefono);console.log(fechaNac);console.log(carnet);
+        console.log(rol);console.log(sexo);console.log(datosAdi);console.log(direccion);
+
+        $.post("insertSocio.php",{usuario: usuario, passw:passw, nombre:nombre, apellidoPat:apellidoPat,apellidoMat:apellidoMat,telefono:telefono, fechaNac:fechaNac,carnet:carnet,rol:rol,sexo:sexo,datosAdi:datosAdi,direccion:direccion},function(result){
+
+          $("#confimacionInsert").html(result);
+          $('#confimacionInsert').show();
+
+        });
+      });
+    }
+
+  </script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
