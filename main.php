@@ -2,20 +2,6 @@
 
 session_start(); //iniciando sesion
 
-/*include 'conexionBD.php';
-
-    $conexionBD = new ConexionBD();
-    $conexionBD->conectar();    
-
-
-    $sql = "select idUsuario,nombre,apellidoPat from usuario where usuario='$valor1' and password='$valor2'";
-
-    
-    $resultado = $conexionBD->conexion->query($sql);
-
-$_SESSION['nombre']=
-$_SESSION['apellido']=
-$_SESSION['idusuario']=*/
 
 
 include 'header.php';
