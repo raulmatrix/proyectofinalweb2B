@@ -32,7 +32,7 @@ include 'sidebarmenu.php';
         <!-- Small boxes (Stat box) -->
 
         <!-- Campo confirmacion de registro -->
-        <div class="confimacionInsert">
+        <div id="confimacionInsert">
             
         </div>
         <div class="row">

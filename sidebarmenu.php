@@ -49,9 +49,24 @@
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Socios
-                
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="socios.php" class="nav-link">
+                  <i class="fas fa-user"></i>
+                  <p>Insertar Socio</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="listarsocios.php" class="nav-link">
+                  <i class="fas fa-file"></i>
+                  <p>Listar Socios</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">

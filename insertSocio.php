@@ -19,14 +19,13 @@
     $direccion = $_POST['direccion'];
 
     
-    $sqlinsert = "INSERT INTO usuario (usuario, password, nombre, apellidoPat, apellidoMat, direccionEsp, telefono, sexo, fechaNac, carnet, varios) 
-    VALUES ('$usuario', '$passw', '$nombre', '$apellidoPat', ' $apellidoMat', '$direccion','$telefono', '$rol', '$sexo', '$fechaNac', '$carnet',' $datosAdi')";
+    $sqlinsert = "INSERT INTO usuario (usuario, password, nombre, apellidoPat, apellidoMat, direccionEsp, telefono, rol, sexo, fechaNac, carnet, varios) VALUES ('$usuario', '$passw', '$nombre', '$apellidoPat', ' $apellidoMat', '$direccion','$telefono', '$rol', '$sexo', '$fechaNac', '$carnet','$datosAdi')";
 
-    if ($conn->query($sqlinsert) === TRUE) {
+    if ($conexionBD->conexion->query($sqlinsert) === TRUE) {
     
 ?>
 
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -39,9 +38,9 @@
 
 <?php
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sqlinsert . "<br>".$conexionBD->conexion->error ;
     }
 
-    $conn->close();
+    $conexionBD->conexion->close();
 
 ?>

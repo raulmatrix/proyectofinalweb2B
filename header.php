@@ -17,6 +17,13 @@
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
@@ -40,7 +47,7 @@
         const fechaNac = $('#fechaNac').val();
         const carnet = $('#carnet').val();
         const rol = $('#rol').val();
-        const sexo = $('#sexo').val();
+        const sexo = $('input:radio[name=sexo]:checked').val();
         const datosAdi = $('#datosAd').val();
         const direccion = $('#dirsocio').val();
 
@@ -50,7 +57,7 @@
         console.log(rol);console.log(sexo);console.log(datosAdi);console.log(direccion);
 
         $.post("insertSocio.php",{usuario: usuario, passw:passw, nombre:nombre, apellidoPat:apellidoPat,apellidoMat:apellidoMat,telefono:telefono, fechaNac:fechaNac,carnet:carnet,rol:rol,sexo:sexo,datosAdi:datosAdi,direccion:direccion},function(result){
-
+          
           $("#confimacionInsert").html(result);
           $('#confimacionInsert').show();
 
