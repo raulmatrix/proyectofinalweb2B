@@ -65,6 +65,48 @@
       });
     }
 
+   
+    function actualizarReg(idSocio){
+     
+     
+        var idSocio = idSocio;
+
+        $.post("updateSocio.php",{idSocio: idSocio},function(result){
+          
+          $("#contenidoSocio").html(result);
+          $('#contenidoSocio').show();
+
+        });
+      
+    }
+
+    function ejecutarUpdateSocio(idSocio){
+      const idSocio = idSocio;
+
+        const usuario = $("#usuario").val();
+        const passw = $('#passw').val();
+        const nombre = $('#nombre').val();
+        const apellidoPat = $('#apellidoPat').val();
+        const apellidoMat = $('#apellidoMat').val();
+        const telefono = $('#telefono').val();
+        const fechaNac = $('#fechaNac').val();
+        const carnet = $('#carnet').val();
+        const rol = $('#rol').val();
+        const sexo = $('input:radio[name=sexo]:checked').val();
+        const datosAdi = $('#datosAd').val();
+        const direccion = $('#dirsocio').val();
+
+        $.post("ejecutarUpdateSocio.php",{idSocio:idSocio, usuario: usuario, passw:passw, nombre:nombre, apellidoPat:apellidoPat,apellidoMat:apellidoMat,telefono:telefono, fechaNac:fechaNac,carnet:carnet,rol:rol,sexo:sexo,datosAdi:datosAdi,direccion:direccion},function(result){
+          
+          
+          window.location.href = "http://localhost:9098/aguaotb/listarsocios.php"; //redireccion hacia la pagina principal
+          
+
+        });
+
+
+    }
+
   </script>
 
 </head>

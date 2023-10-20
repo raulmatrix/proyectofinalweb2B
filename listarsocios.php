@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 include 'header.php';
 include 'sidebarmenu.php';
 
@@ -49,7 +51,7 @@ $datos=$conexionBD->conexion->query($consultaSocio);
                 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -145,6 +147,33 @@ $datos=$conexionBD->conexion->query($consultaSocio);
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+  <div id="contenedorModal">
+      <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="modal-title">Actualizar registro</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              
+            </div>
+            <div id="contenidoSocio"> <!--contenido actualizar-->
+              <div class="modal-body">
+                <!--contenido para mostrar en actualizacion-->
+                        <p>hola</p>
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateCliente()">Guardar</button>
+              </div>
+            </div><!--fin actualizar-->
+          </div>
+        </div>
+      </div>
+    </div><!--fin div contenedorModal-->
   
 
 

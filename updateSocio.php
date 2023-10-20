@@ -1,58 +1,43 @@
 <?php
+include 'conexionBD.php';
 
-session_start();
+$conexionBD = new ConexionBD();
+$conexionBD->conectar();  
+
+$idUsuario = $_POST['idSocio'];
+
+$consultaSocio = "SELECT idUsuario,nombre,apellidoPat,apellidoMat,telefono,rol,usuario,password,direccionEsp,sexo,fechaNac,carnet,varios FROM usuario WHERE idUsuario=$idUsuario";
+
+$datos=$conexionBD->conexion->query($consultaSocio); //ejecutar la consulta
+
+   
+      $fila = mysqli_fetch_assoc($datos);
+      
+      $idEnvio = $fila['idUsuario'];
+
+      /*formatear date con php*/
+      $fechaNac = $fila['fechaNac'];
+
+      $fecha = date_create($fechaNac);
+      $fechaNacFormateada = date_format($fecha, "Y-m-d");
 
 
-include 'header.php';
-include 'sidebarmenu.php';
-?>
+     ?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Registro Socios</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-
-        <!-- Campo confirmacion de registro -->
-        <div id="confimacionInsert">
-            
-        </div>
-        <div class="row">
-          <div class="col-3">
-            
-          </div>
-          <div class="col-6">
-                <form action="" method="get">
+      <div class="modal-body">
+        <!--contenido para mostrar en actualizacion-->
+        <form action="" method="get">
                     <div class="form-group">
                       <label for="nombre">Nombre</label>
                       <input type="text"
-                        class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="">
+                        class="form-control" value="<?php echo $fila['nombre'];?>" name="nombre" id="nombre" aria-describedby="helpId" placeholder="">
 
                       <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                               <label for="apellidoPat">Apellido Paterno</label>
                               <input type="text"
-                                class="form-control" name="apellidoPat" id="apellidoPat" aria-describedby="helpId" placeholder="">
+                                class="form-control" value="<?php echo $fila['apellidoPat']?>" name="apellidoPat" id="apellidoPat" aria-describedby="helpId" placeholder="">
                               
                             </div>
                         </div>
@@ -60,7 +45,7 @@ include 'sidebarmenu.php';
                             <div class="form-group">
                               <label for="apellidoMat">Apellido Materno</label>
                               <input type="text"
-                                class="form-control" name="apellidoMat" id="apellidoMat" aria-describedby="helpId" placeholder="">
+                                class="form-control" value="<?php echo $fila['apellidoMat']?>" name="apellidoMat" id="apellidoMat" aria-describedby="helpId" placeholder="">
                               
                             </div>
                         </div>
@@ -71,21 +56,21 @@ include 'sidebarmenu.php';
                                 <div class="form-group">
                                   <label for="telefono">Telefono</label>
                                   <input type="text"
-                                    class="form-control" name="telefono" id="telefono" aria-describedby="helpId" placeholder="">
+                                    class="form-control" value="<?php echo $fila['telefono']?>" name="telefono" id="telefono" aria-describedby="helpId" placeholder="">
                                 </div>
                           </div>
                           <div class="col-4">
                                 <div class="form-group">
                                   <label for="fechaNac">Fecha Nacimiento</label>
                                   <input type="date"
-                                    class="form-control" name="fechaNac" id="fechaNac" aria-describedby="helpId" placeholder="">
+                                    class="form-control" value="<?php echo "".$fechaNacFormateada?>" name="fechaNac" id="fechaNac" aria-describedby="helpId" placeholder="">
                                 </div>
                           </div>
                           <div class="col-4">
                                 <div class="form-group">
                                   <label for="carnet">Carnet</label>
                                   <input type="text"
-                                    class="form-control" name="carnet" id="carnet" aria-describedby="helpId" placeholder="">
+                                    class="form-control" value="<?php echo $fila['carnet']?>" name="carnet" id="carnet" aria-describedby="helpId" placeholder="">
                                 </div>
                           </div>
                       </div>
@@ -95,14 +80,14 @@ include 'sidebarmenu.php';
                                 <div class="form-group">
                                   <label for="usuario">Usuario</label>
                                   <input type="text"
-                                    class="form-control" name="usuario" id="usuario" aria-describedby="helpId" placeholder="">
+                                    class="form-control" value="<?php echo $fila['usuario']?>" name="usuario" id="usuario" aria-describedby="helpId" placeholder="">
                                 </div>
                           </div>
                           <div class="col-6">
                                 <div class="form-group">
                                   <label for="passw">Contraseña</label>
                                   <input type="password"
-                                    class="form-control" name="passw" id="passw" aria-describedby="helpId" placeholder="">
+                                    class="form-control" value="<?php echo $fila['password']?>" name="passw" id="passw" aria-describedby="helpId" placeholder="">
                                 </div>
                           </div>
                       </div>
@@ -114,7 +99,6 @@ include 'sidebarmenu.php';
                                  <select class="form-control" name="rol" id="rol">
                                    <option>Administrador</option>
                                    <option>Socio</option>
-                                   
                                  </select>
                                </div>
                           </div>
@@ -136,7 +120,7 @@ include 'sidebarmenu.php';
                           <div class="form-group">
                               <label for="datosAd">Datos adicionales</label>
                               <input type="text"
-                                class="form-control" name="datosAd" id="datosAd" aria-describedby="helpId" placeholder="Datos Adicionales">
+                                class="form-control" value="<?php echo $fila['varios']?>" name="datosAd" id="datosAd" aria-describedby="helpId" placeholder="Datos Adicionales">
                               
                             </div>
                         </div>
@@ -147,68 +131,24 @@ include 'sidebarmenu.php';
                         <div class="col-12">
                           <div class="form-group">
                             <label for="dirsocio">Direccion Socio</label>
-                            <textarea class="form-control" name="dirsocio" id="dirsocio" rows="3"></textarea>
+                            <textarea class="form-control"  name="dirsocio" id="dirsocio" rows="3"><?php echo $fila['direccionEsp']?></textarea>
                           </div>
                         </div>
                       </div>  
 
-                      <div class="row">
-                        <div class="col-12">
-                            <a name="" id="" onclick="insertarSocio();" class="btn btn-primary" href="#" role="button">Guardar datos</a>
-                        </div>
-                      </div>
+                     
                     </div>
                 </form>
-          </div>
-          <div class="col-3">
-            
-          </div>
-          
-        </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-           
-            <!-- /.card -->
-
-            <!-- DIRECT CHAT -->
-            
-            <!--/.direct-chat -->
-
-            <!-- TO DO List -->
-           
-            <!-- /.card -->
-          </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-5 connectedSortable">
-
-            <!-- Map card -->
-            
-            <!-- /.card -->
-
-            <!-- solid sales graph -->
-           
-            <!-- /.card -->
-
-            <!-- Calendar -->
-           
-            <!-- /.card -->
-          </section>
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
 
 
-  <?php
-  include 'footer.php';
-  ?>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onClick="ejecutarUpdateSocio(<?php echo $idUsuario; ?>)">Guardar</button>
+
+      </div>
+
+
+
+
