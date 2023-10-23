@@ -94,23 +94,23 @@ $datos=$conexionBD->conexion->query($consultaSocio); //ejecutar la consulta
 
                       <div class="row">
                           <div class="col-6">
-                               <div class="form-group">
-                                 <label for="rol">Rol de usuario</label>
-                                 <select class="form-control" name="rol" id="rol">
-                                   <option>Administrador</option>
-                                   <option>Socio</option>
-                                 </select>
-                               </div>
+                                <div class="form-group">
+                                    <label for="rol">Rol de usuario</label>
+                                    <select class="form-control" name="rol" id="rol">
+                                        <option <?php echo ($fila['rol'] == 'Administrador') ? 'selected' : ''; ?>>Administrador</option>
+                                        <option <?php echo ($fila['rol'] == 'Socio') ? 'selected' : ''; ?>>Socio</option>
+                                    </select>
+                                </div>
                           </div>
                           <div class="col-6">
-                          <label for="sexo">Sexo</label>
+                                <label for="sexo">Sexo</label>
                                 <div class="form-check">
-                                  <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="sexo" id="sexo1" value="hombre" >
-                                    Hombre
-                                    <input type="radio" class="form-check-input" name="sexo" id="sexo2" value="mujer" >
-                                    Mujer
-                                  </label>
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="sexo" id="sexo1" value="hombre" <?php echo ($fila['sexo'] == 'hombre') ? 'checked' : ''; ?>>
+                                        Hombre <br>
+                                        <input type="radio" class="form-check-input" name="sexo" id="sexo2" value="mujer" <?php echo ($fila['sexo'] == 'mujer') ? 'checked' : ''; ?>>
+                                        Mujer
+                                    </label>
                                 </div>
                           </div>
                       </div>

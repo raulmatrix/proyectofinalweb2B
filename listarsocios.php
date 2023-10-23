@@ -9,7 +9,7 @@ include 'conexionBD.php';
 $conexionBD = new ConexionBD();
 $conexionBD->conectar();    
 
-$consultaSocio = "SELECT idUsuario,nombre,apellidoPat,apellidoMat,telefono,rol FROM usuario";
+$consultaSocio = "SELECT idUsuario,nombre,apellidoPat,apellidoMat,telefono,rol,medidor FROM usuario";
 
 $datos=$conexionBD->conexion->query($consultaSocio);
 ?>
@@ -62,6 +62,7 @@ $datos=$conexionBD->conexion->query($consultaSocio);
                     <th>Apellido Paterno</th>
                     <th>Apellido Materno</th>
                     <th>Rol</th>
+                    <th>Nro Medidor</th>
                     <th>Telefono</th>
                   </tr>
                   </thead>
@@ -78,10 +79,12 @@ $datos=$conexionBD->conexion->query($consultaSocio);
                                 echo "<td>".$fila['apellidoPat']."</td>";
                                 echo "<td>".$fila['apellidoMat']."</td>";
                                 echo "<td>".$fila['rol']."</td>";
+                                echo "<td>".$fila['medidor']."</td>";
                                 echo "<td>".$fila['telefono']."</td>";
 
                                 echo "<td><button type='button' class='btn btn-warning' data-toggle='modal' data-target='#update' onClick='actualizarReg($idUsuario)'><i class='fas fa-edit'></i></button></td>";
-                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#delete'><i class='fas fa-trash'></i></button></td>";
+                            
+                                echo "<td><button type='button' class='btn btn-danger' data-toggle='modal' data-target='#delete' onClick='deleteReg($idUsuario)'><i class='fas fa-trash'></i></button></td>";
                             echo "</tr>";
                         }
                       ?>
@@ -175,6 +178,26 @@ $datos=$conexionBD->conexion->query($consultaSocio);
       </div>
     </div><!--fin div contenedorModal-->
   
+
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          <h4 class="modal-title" id="">Eliminar Registro</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            
+
+          </div>
+          <div class="modal-body">
+              Esta seguro de eliminar el registro??
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" onClick='eliminarRegistro(<?php echo $idUsuario;?>)'>Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
   <?php

@@ -22,7 +22,7 @@ $datosAdi = $_POST['datosAdi'];
 $direccion = $_POST['direccion'];
 
 
-$consultaUpdate = "UPDATE usuario SET usuario='$usuario', password='$passw', nombre='$nombre', apellidoPat='$apellidoPat', apellidoMat='$apellidoMat', telefono='$telefono', fechaNac='$fechaNac', carnet='$carnet', datosAdi='$datosAdi', direccionEsp='$direccion' WHERE idUsuario='$idUsuario'";
+$consultaUpdate = "UPDATE usuario SET usuario='$usuario', password='$passw', nombre='$nombre', apellidoPat='$apellidoPat', apellidoMat='$apellidoMat', telefono='$telefono', fechaNac='$fechaNac', carnet='$carnet', varios='$datosAdi', direccionEsp='$direccion' WHERE idUsuario='$idUsuario'";
 
 $datos=$conexionBD->conexion->query($consultaUpdate); //ejecutar la consulta
 

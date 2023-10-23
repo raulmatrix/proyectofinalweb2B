@@ -72,12 +72,11 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="cobros.php" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Cobros
              
-                
               </p>
             </a>
             

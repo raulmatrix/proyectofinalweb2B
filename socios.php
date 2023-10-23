@@ -2,7 +2,6 @@
 
 session_start();
 
-
 include 'header.php';
 include 'sidebarmenu.php';
 ?>
@@ -108,7 +107,7 @@ include 'sidebarmenu.php';
                       </div>
 
                       <div class="row">
-                          <div class="col-6">
+                          <div class="col-4">
                                <div class="form-group">
                                  <label for="rol">Rol de usuario</label>
                                  <select class="form-control" name="rol" id="rol">
@@ -118,12 +117,21 @@ include 'sidebarmenu.php';
                                  </select>
                                </div>
                           </div>
-                          <div class="col-6">
+
+                          <div class="col-4">
+                               <div class="form-group">
+                                 <label for="rol">Nro Medidor</label>
+                                 <input type="text" class="form-control" name="medidor" id="medidor" aria-describedby="helpId" placeholder="Nro de medidor asignado">
+                              
+                               </div>
+                          </div>
+                          <div class="col-4">
                           <label for="sexo">Sexo</label>
                                 <div class="form-check">
                                   <label class="form-check-label">
                                     <input type="radio" class="form-check-input" name="sexo" id="sexo1" value="hombre" >
                                     Hombre
+                                    <br>
                                     <input type="radio" class="form-check-input" name="sexo" id="sexo2" value="mujer" >
                                     Mujer
                                   </label>

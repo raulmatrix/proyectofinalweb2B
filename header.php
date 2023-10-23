@@ -36,8 +36,7 @@
 
   <script>
     function insertarSocio(){
-      $(document).ready(function()
-        {
+     
         const usuario = $("#usuario").val();
         const passw = $('#passw').val();
         const nombre = $('#nombre').val();
@@ -50,19 +49,20 @@
         const sexo = $('input:radio[name=sexo]:checked').val();
         const datosAdi = $('#datosAd').val();
         const direccion = $('#dirsocio').val();
+        const medidor = $('#medidor').val();
 
-
+        console.log(medidor);
         console.log(usuario);console.log(passw);console.log(nombre);console.log(apellidoPat);
         console.log(apellidoMat);console.log(telefono);console.log(fechaNac);console.log(carnet);
         console.log(rol);console.log(sexo);console.log(datosAdi);console.log(direccion);
 
-        $.post("insertSocio.php",{usuario: usuario, passw:passw, nombre:nombre, apellidoPat:apellidoPat,apellidoMat:apellidoMat,telefono:telefono, fechaNac:fechaNac,carnet:carnet,rol:rol,sexo:sexo,datosAdi:datosAdi,direccion:direccion},function(result){
+        $.post("insertSocio.php",{medidor:medidor, usuario: usuario, passw:passw, nombre:nombre, apellidoPat:apellidoPat,apellidoMat:apellidoMat,telefono:telefono, fechaNac:fechaNac,carnet:carnet,rol:rol,sexo:sexo,datosAdi:datosAdi,direccion:direccion},function(result){
           
           $("#confimacionInsert").html(result);
           $('#confimacionInsert').show();
 
         });
-      });
+     
     }
 
    
@@ -80,8 +80,8 @@
       
     }
 
-    function ejecutarUpdateSocio(idSocio){
-      const idSocio = idSocio;
+    function ejecutarUpdateSocio(idSocio2){
+      const idSocio = idSocio2;
 
         const usuario = $("#usuario").val();
         const passw = $('#passw').val();
@@ -95,16 +95,33 @@
         const sexo = $('input:radio[name=sexo]:checked').val();
         const datosAdi = $('#datosAd').val();
         const direccion = $('#dirsocio').val();
+        const medidor = $('#medidor').val();
 
-        $.post("ejecutarUpdateSocio.php",{idSocio:idSocio, usuario: usuario, passw:passw, nombre:nombre, apellidoPat:apellidoPat,apellidoMat:apellidoMat,telefono:telefono, fechaNac:fechaNac,carnet:carnet,rol:rol,sexo:sexo,datosAdi:datosAdi,direccion:direccion},function(result){
+        $.post("ejecutarUpdateSocio.php",{idSocio:idSocio, medidor:medidor, usuario: usuario, passw:passw, nombre:nombre, apellidoPat:apellidoPat,apellidoMat:apellidoMat,telefono:telefono, fechaNac:fechaNac,carnet:carnet,rol:rol,sexo:sexo,datosAdi:datosAdi,direccion:direccion},function(result){
           
           
           window.location.href = "http://localhost:9098/aguaotb/listarsocios.php"; //redireccion hacia la pagina principal
           
-
+          //alert(""+idSocio+"................"+result);
         });
 
 
+    }
+
+    function deleteReg(socio3){
+      var idSocio = socio3;
+      console.log(socio3);
+     
+
+    }
+
+    function eliminarRegistro(socio4){
+      var idSocio = socio4;
+        alert(socio4);
+        $.post("deleteSocio.php",{idSocio: idSocio},function(result){
+        
+          window.location.href = "http://localhost:9098/aguaotb/listarsocios.php";
+      });
     }
 
   </script>
