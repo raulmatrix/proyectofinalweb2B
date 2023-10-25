@@ -124,6 +124,23 @@
       });
     }
 
+    function cobrar(){
+        
+        const tipoPago = $("#tipo").val();
+        const socio = $('#socio').val();
+        const monto = $('#monto').val();
+        const descuento = $('#descuento').val();
+        const fecha = $('#fecha').val();
+        const descripcion = $('#descripcion').val();
+
+        $.post("insertCobro.php",{tipoPago:tipoPago, socio: socio, monto:monto, descuento:descuento, fecha:fecha,descripcion:descripcion},function(result){
+          
+          $("#confimacionInsertCobro").html(result);
+          $('#confimacionInsertCobro').show();
+
+        });
+    }
+
   </script>
 
 </head>
