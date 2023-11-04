@@ -32,6 +32,7 @@
     $_SESSION['var_nombre'] = $nombre;
     $_SESSION['var_apellidoPat'] = $apellidoPat;
 
+    
     ?>
     <script>
     window.location.href = "http://localhost:9098/aguaotb/main.php"; //redireccion hacia la pagina principal

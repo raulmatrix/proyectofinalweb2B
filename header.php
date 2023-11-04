@@ -112,7 +112,6 @@
       var idSocio = socio3;
       console.log(socio3);
      
-
     }
 
     function eliminarRegistro(socio4){
